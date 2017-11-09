@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="Mychart" style="height:500px;width:800px"></div>
+		<script src="echarts.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var myChart =echarts.init(document.getElementById("Mychart"));
+			
+			var option={
+				
+    backgroundColor:"#344A58",
+    title: {
+        text: '16年1月-16年12月充值客单分析',
+        textStyle:{
+            color:"#fff",
+            fontSize:22,
+        }
+    },
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        },
+
+    },
+    legend:{
+	     data:[
+	      {
+	     	name:"老用户",
+	       // icon: 'rect',
+	      },
+	      {
+	     	name:"新用户",
+	       // icon: 'rect',
+	      },
+	      {
+	     	name:"总",
+	   //  	icon:"line"
+	      },
+	     ],
+	   //  itemHeight: 8,
+    //      itemWidth: 14,
+         left:"3%",top:"8%",
+         itemGap: 10,
+	     textStyle: {
+	            color: "#91979D",
+	           // fontSize: 16
+	     },       
+	    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        top:"15%",
+        containLabel: true
+    },
+    xAxis: {
+            type: 'category',
+            axisLine: {      //隐藏X轴线
+                lineStyle:{
+                	color:"#91979D"
+                }
+            },
+            axisTick:{
+                show:false,
+            },
+            // axisLabel.show
+            // axisLabel: {
+            //     textStyle: {
+            //     	color: '#fff',
+            //     },,
+            //     fontSize:20
+            // },
+            data: [1,2,3,4,5,6,7,8,9,10,11,12]
+        },
+    yAxis: {
+        type : 'value',
+        axisTick:{
+                show:false,
+            },
+        axisLine: {      //隐藏X轴线
+                lineStyle:{
+                	color:"#91979D"
+                }
+            },
+            splitLine: {
+               show:false,
+
+               },
+    },
+    series: [
+        {
+            name: '老用户',
+            type: 'bar',
+            barMaxWidth:36,
+            stack:  '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'insideTop'
+                }
+            },
+            itemStyle: {
+                normal: {
+                    barBorderColor: 'rgba(0,0,0,0)',
+                    color: 'rgba(255,144,128,1)'
+                },
+                // emphasis: {
+                //     barBorderColor: 'rgba(0,0,0,0)',
+                //     color: 'rgba(0,0,0,0)'
+                // }
+            },
+            "data": [198.66,330.81,151.95,160.12,222.56,229.05,128.53,250.91,224.47,473.99,126.85,260.5]
+        },{
+            name: '新用户',
+            type: 'bar',
+            stack: '总量',
+            barWidth:36,
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            itemStyle: {
+                normal: {
+                     color: "rgba(0,191,183,1)",
+                }
+                // emphasis: {
+                //     barBorderColor: 'rgba(0,0,0,0)',
+                //     color: 'rgba(0,0,0,0)'
+                // }
+            },
+            data: [82.89,67.54,62.07,59.43,67.02,67.09,35.66,71.78,81.61,78.85,79.12,72.3]
+        },
+        {
+            name: '总',
+            type: 'line',
+            stack: '总量',
+            symbol:"circle",
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            lineStyle:{
+              		normal: {
+		                color: '#DFDC4F',
+		              //  type:"dotted",
+		            },
+              	},
+            itemStyle: {
+	            normal: {
+	                color: '#DFDC4F',
+	                borderWidth: 8,
+	                borderColor:"#DFDC4F",
+	            },
+	            emphasis: {
+	                borderColor: '#FDE730'
+	            }
+	        },
+            data:[281.55,398.35,224.02,219.55,289.57,296.14,164.18,322.69,306.08,552.84,206.97,332.79]
+        }
+    ]
+
+			}
+		myChart.setOption(option);
+		</script>
+	</body>
+</html>
